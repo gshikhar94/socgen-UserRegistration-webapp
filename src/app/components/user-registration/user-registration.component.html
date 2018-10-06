@@ -1,0 +1,42 @@
+<div class="card">
+  <div class="card-header text-white" style="background-color:#3F51B5">Sign up</div>
+  <div class="row">
+    <div class="col-12 col-md-12">
+      <form class="signup" [formGroup]="signUpForm" (ngSubmit)="signup()">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" id="firstName" placeholder="Enter First Name" formControlName="firstName"
+            required>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name" formControlName="lastName"
+            required>
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <select [(ngModel)]="selectedGender" class="gender-select" formControlName="gender" required>
+            <option *ngFor="let gender of genders" [value]="gender.name">{{gender.name}}</option>
+
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input type="date" class="form-control" id="date" placeholder="Enter Last Name" formControlName="date"
+            required>
+        </div>
+        <div class="form-group">
+          <label for="department">Department</label>
+          <input type="text" class="form-control" id="department" placeholder="Enter Department" formControlName="department"
+            required>
+        </div>
+        <button type="button" class="btn btn-primary" [disabled]="!signUpForm.valid" (click)="signup()">Submit</button>
+        <button type="reset" class="btn btn-danger" (click)="resetForm()">Reset</button>
+      </form>
+    </div>
+    <ng-template #loading>
+      <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px"></i>
+    </ng-template>
+
+  </div>
+</div>
